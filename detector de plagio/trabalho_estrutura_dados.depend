@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1678842446 source:c:\users\escritório\desktop\trabalho_estrutura_dados\main.c
+
+1679954385 source:c:\users\escritório\desktop\trabalho_estrutura_dados\funcoes.c
+	"funcoes.h"
+	<stdio.h>
+
+1679954809 c:\users\escritório\desktop\trabalho_estrutura_dados\funcoes.h
+

@@ -1,31 +1,33 @@
 # depslib dependency file v1.0
-1680396430 source:c:\users\ildemar\desktop\detector de plágio\arquivos.c
+1680458483 source:c:\users\ildemar\desktop\detector de plágio\arquivos.c
 	<stdio.h>
 	<string.h>
 	"arquivos.h"
 
-1680398327 source:c:\users\ildemar\desktop\detector de plágio\listas.c
+1680450221 source:c:\users\ildemar\desktop\detector de plágio\listas.c
 	<stdio.h>
 	<stdlib.h>
 	"listas.h"
 	"arvores.h"
 
-1680398559 source:c:\users\ildemar\desktop\detector de plágio\main.c
+1680459138 source:c:\users\ildemar\desktop\detector de plágio\main.c
 	<stdio.h>
 	<time.h>
+	<locale.h>
+	<stdlib.h>
 	"arvores.h"
 	"listas.h"
 	"arquivos.h"
 
-1680397320 c:\users\ildemar\desktop\detector de plágio\listas.h
+1680450195 c:\users\ildemar\desktop\detector de plágio\listas.h
 
-1680396362 c:\users\ildemar\desktop\detector de plágio\arquivos.h
+1680458135 c:\users\ildemar\desktop\detector de plágio\arquivos.h
 	"arvores.h"
 
-1680393081 c:\users\ildemar\desktop\detector de plágio\arvores.h
+1680450195 c:\users\ildemar\desktop\detector de plágio\arvores.h
 	"listas.h"
 
-1680393048 source:c:\users\ildemar\desktop\detector de plágio\arvores.c
+1680450235 source:c:\users\ildemar\desktop\detector de plágio\arvores.c
 	<stdio.h>
 	<stdlib.h>
 	"arvores.h"

@@ -28,27 +28,3 @@ int Compara_Palavra(TipoPtNo *str1, TipoPtNo *str2)
         return -1;
 }
 
-
-
-TipoPtNo Insere_Palavra(TipoPtNo *str, char word[], int i)  //i sempre começa em 0
-{
-
-    while(word[i] != NULL){
-
-        if(word[i] >= 65 && word[i] <= 90){   //Transforma letras maíusculas em minúsculas
-            word[i] = word[i] + 32;
-        }
-
-        if(str == NULL){
-            str = (TipoPtNo*) malloc(sizeof(TipoPtNo));
-            str->letra = word[i];
-            str->prox = NULL;
-            i++;
-        }
-
-        Insere_Palavra(str->prox, word, i);
-    }
-
-    return *str;
-
-}

@@ -29,4 +29,6 @@ int Contagem_Palavras(pNodoA *a);         //Caminhamento pré-fixado à esquerda
 
 int Ja_Existe(pNodoA *a, TipoPtNo *str);
 
+pNodoA* Insere_Palavra(TipoPtNo *str, pNodoA *a, char word[], int i);
+
 #endif //ARVORES_H

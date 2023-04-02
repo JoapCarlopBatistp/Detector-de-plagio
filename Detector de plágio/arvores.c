@@ -164,3 +164,36 @@ int Ja_Existe(pNodoA *a, TipoPtNo *str)
     return 0;     //Não achou igual
 
 }
+
+pNodoA* Insere_Palavra(TipoPtNo *str, pNodoA *a, char word[], int i)  //i sempre começa em 0
+{
+
+    TipoPtNo *ptaux;
+    int j;
+
+    ptaux = str;
+
+    while(word[i] != NULL){
+
+        if(word[i] >= 65 && word[i] <= 90){   //Transforma letras maíusculas em minúsculas
+            word[i] = word[i] + 32;
+        }
+
+        if(str == NULL){
+            ptaux = (TipoPtNo*) malloc(sizeof(TipoPtNo));
+            ptaux->letra = word[i];
+            ptaux->prox = NULL;
+            i++;
+        }
+
+        ptaux = ptaux->prox;
+    }
+    j = Ja_Existe(a, str);
+
+    if(j == 0){
+        a = InsereAVL(a, str, 0);
+    }
+
+    return a;
+
+}

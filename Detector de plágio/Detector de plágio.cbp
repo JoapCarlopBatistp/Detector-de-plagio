@@ -31,6 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="arquivos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arquivos.h" />
+		<Unit filename="arvores.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="arvores.h" />
+		<Unit filename="listas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="listas.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

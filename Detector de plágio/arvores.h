@@ -29,6 +29,10 @@ int Contagem_Palavras(pNodoA *a);         //Caminhamento pré-fixado à esquerda
 
 int Ja_Existe(pNodoA *a, TipoPtNo *str);
 
-pNodoA* Insere_Palavra(TipoPtNo *str, pNodoA *a, char word[], int i);
+pNodoA* Insere_Palavra(pNodoA *a, char word[], int i);
+
+pNodoA* Inicializa_Arvore(void);
+
+int Compara_Arvores(pNodoA *a, pNodoA *b);  //Não terminado ainda
 
 #endif //ARVORES_H

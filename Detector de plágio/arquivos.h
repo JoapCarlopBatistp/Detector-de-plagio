@@ -3,6 +3,7 @@
 #ifndef ARQUIVOS_H
 #define ARQUIVOS_H
 
-pNodoA Abre_Arquivo(char *arq, char *stopword);
+#define NUMERO 100
+pNodoA* Abre_Arquivo(char *arq, char *stopword);
 
 #endif//ARQUIVOS_H

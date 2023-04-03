@@ -5,10 +5,11 @@
 
 
 pNodoA* InsereAVL (pNodoA *a, TipoPtNo *str, int *ok){
-    /* Insere nodo em uma árvore AVL, onde A representa a raiz da árvore,
-    x, a chave a ser inserida e h a altura da árvore */
+
+
 
     int comparacao;
+
 
     if (a == NULL) {
         a = (pNodoA*) malloc(sizeof(pNodoA));
@@ -16,9 +17,11 @@ pNodoA* InsereAVL (pNodoA *a, TipoPtNo *str, int *ok){
         a->esq = NULL;
         a->dir = NULL;
         a->FB = 0;
-        *ok = 1;
+        ok = 1;
     }
-    else comparacao = Compara_Palavra(str, a->palavra); if (comparacao == -1) {           //Modificar depois
+    else{
+        comparacao = Compara_Palavra(str, a->palavra);
+        if (comparacao == -1) {
             a->esq = InsereAVL(a->esq,str,ok);
             if (*ok) {
                 switch (a->FB) {
@@ -28,21 +31,24 @@ pNodoA* InsereAVL (pNodoA *a, TipoPtNo *str, int *ok){
                 }
             }
             }
-    else {
-        a->dir = InsereAVL(a->dir,str,ok);
-        if (*ok) {
-            switch (a->FB) {
-                case 1: a->FB = 0; *ok = 0; break;
-                case 0: a->FB = -1; break;
-                case -1: a = Caso2(a,ok); break;
+        else {
+            a->dir = InsereAVL(a->dir,str,ok);
+            if (*ok) {
+                switch (a->FB) {
+                    case 1: a->FB = 0; *ok = 0; break;
+                    case 0: a->FB = -1; break;
+                    case -1: a = Caso2(a,ok); break;
+                }
             }
         }
     }
+
 return a;
 }
 
 pNodoA* Caso1 (pNodoA *a , int *ok)
 {
+
     pNodoA *z;
     z = a->esq;
 
@@ -131,12 +137,14 @@ pNodoA* rotacao_dupla_esquerda (pNodoA *p)
     if (y->FB == 1) z->FB = -1;
     else z->FB = 0;
 
+
     p = y;
     return p;
 }
 
 int Contagem_Palavras(pNodoA *a)
 {
+
     if(a == NULL){
         return 0;
     }
@@ -148,16 +156,19 @@ int Contagem_Palavras(pNodoA *a)
 int Ja_Existe(pNodoA *a, TipoPtNo *str)
 {
     int flag;
-    pNodoA *aux = a;
+    pNodoA *aux;
 
-    while(a != NULL){
-        flag = Compara_Palavra(a->palavra, str);
+    aux = a;
+
+
+    while(aux != NULL){
+        flag = Compara_Palavra(aux->palavra, str);
 
         switch(flag)
         {
             case 0: return 1; break;         //Achou igual
-            case -1: aux = aux->dir; break;
-            case 1: aux = aux->esq; break;
+            case -1: aux = aux->dir; break;  //Se a string for maior
+            case 1: aux = aux->esq; break;  //Se a string for menor
         }
     }
 
@@ -165,35 +176,67 @@ int Ja_Existe(pNodoA *a, TipoPtNo *str)
 
 }
 
-pNodoA* Insere_Palavra(TipoPtNo *str, pNodoA *a, char word[], int i)  //i sempre começa em 0
+pNodoA* Insere_Palavra(pNodoA *a, char word[], int i)  //i sempre começa em 0
 {
-
-    TipoPtNo *ptaux;
+    TipoPtNo *str = Inicializa_Lista();
+    char c;
+    int ok = 0;
     int j;
 
-    ptaux = str;
 
-    while(word[i] != NULL){
+    while(word[i] != '\0'){
 
         if(word[i] >= 65 && word[i] <= 90){   //Transforma letras maíusculas em minúsculas
             word[i] = word[i] + 32;
         }
 
-        if(str == NULL){
-            ptaux = (TipoPtNo*) malloc(sizeof(TipoPtNo));
-            ptaux->letra = word[i];
-            ptaux->prox = NULL;
-            i++;
-        }
-
-        ptaux = ptaux->prox;
+        c = word[i];
+        str = Insere_Lista(str, c);
+        i++;
     }
+
     j = Ja_Existe(a, str);
 
+
     if(j == 0){
-        a = InsereAVL(a, str, 0);
+        a = InsereAVL(a, str, &ok);
     }
+
 
     return a;
 
+}
+
+pNodoA* Inicializa_Arvore(void){
+    return NULL;
+}
+
+int Compara_Arvores(pNodoA *a, pNodoA *b){
+
+    int resultado = 0;
+
+    if(Compara_Palavra(a->palavra, b->palavra) == 0){
+        return resultado + 1;
+    }
+    else
+        return resultado;
+
+}
+
+pNodoA* Caminhamento(pNodoA *a, pNodoA *b){
+    int total;
+
+    a = Caminhamento(a->dir, b);
+    a = Caminhamento(a->esq, b);
+
+    if(a == NULL){
+        return 0;
+    }
+    else{
+        while(b != NULL){
+        total += Compara_Arvores(a, b);
+        total += Compara_Arvores(a, b->esq);
+        total += Compara_Arvores(a, b->dir);
+        }
+    }
 }
